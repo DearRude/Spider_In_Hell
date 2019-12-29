@@ -1,1 +1,1 @@
-/usr/bin/cc -g   CMakeFiles/Spider_In_Hell.dir/main.c.o  -o Spider_In_Hell 
+/usr/bin/cc -g   CMakeFiles/Spider_In_Hell.dir/main.c.o  -o Spider_In_Hell -lm 
