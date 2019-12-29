@@ -1,6 +1,0 @@
-nodes       3
-matrix      0 1 0
-            1 0 1
-            0 1 0
-spider      1
-butterflies [3]
