@@ -27,7 +27,7 @@ void resetGravityMatrix(){
         for (int j = 0; j < nodeCounts; j++){
             linkGravity[i][j] = 0;
         }
-}
+} // Set Gravity Matrix to 0.
 
 void makeGravitySymmetric(){
     int sum = 0;
@@ -38,7 +38,7 @@ void makeGravitySymmetric(){
             linkGravity[j][i] = sum;
             sum = 0;
         }
-}
+} // Makes the Gravity Matrix symmetric.
 
 void printGravityMatrix(){
     for (int i = 0; i < nodeCounts; i++) {
@@ -47,8 +47,7 @@ void printGravityMatrix(){
         }
         printf("\n");
     }
-}
-
+} // Prints the Gravity Matrix.
 
 
 void add2lengthRoutes(int startNode, int weight) {
@@ -60,7 +59,7 @@ void add2lengthRoutes(int startNode, int weight) {
                     linkGravity[startNode][ad1] += weight;
                     linkGravity[ad1][ad2] += weight;
                 }
-}
+} // Add gravity for 2-lengths.
 
 void add3lengthRoutes(int startNode, int weight){
     for (int ad1 = 0; ad1 < nodeCounts; ad1++)
@@ -75,7 +74,7 @@ void add3lengthRoutes(int startNode, int weight){
                             linkGravity[ad2][ad3] += weight;
                         }
 
-}
+} // Add gravity for 3-lengths.
 
 void add4lengthRoutes(int startNode, int weight){
     for (int ad1 = 0; ad1 < nodeCounts; ad1++)
@@ -93,7 +92,7 @@ void add4lengthRoutes(int startNode, int weight){
                                     linkGravity[ad3][ad4] += weight;
                                 }
 
-}
+} // Add gravity for 4-lengths.
 
 void add5lengthRoutes(int startNode, int weight){
     for (int ad1 = 0; ad1 < nodeCounts; ad1++)
@@ -114,7 +113,7 @@ void add5lengthRoutes(int startNode, int weight){
                                             linkGravity[ad4][ad5] += weight;
                                 }
 
-}
+} // Add gravity for 5-lengths.
 
 void add6lengthRoutes(int startNode, int weight){
     for (int ad1 = 0; ad1 < nodeCounts; ad1++)
@@ -138,7 +137,7 @@ void add6lengthRoutes(int startNode, int weight){
                                                     linkGravity[ad5][ad6] += weight;
                                                 }
 
-}
+} // Add gravity for 6-lengths.
 
 void add7lengthRoutes(int startNode, int weight){
     for (int ad1 = 0; ad1 < nodeCounts; ad1++)
@@ -165,9 +164,9 @@ void add7lengthRoutes(int startNode, int weight){
                                                             linkGravity[ad6][ad7] += weight;
                                                         }
 
-}
+} // Add gravity for 7-lengths.
 
-void add8lengthRoutes(int startNode, int weight) {
+void add8lengthRoutes(int startNode, int weight){
     for (int ad1 = 0; ad1 < nodeCounts; ad1++)
         if (adMatrix[startNode][ad1])
             for (int ad2 = 0; ad2 < nodeCounts; ad2++)
@@ -195,9 +194,9 @@ void add8lengthRoutes(int startNode, int weight) {
                                                                     linkGravity[ad7][ad8] += weight;
                                                                 }
 
-}
+} // Add gravity for 8-lengths.
 
-void add9lengthRoutes(int startNode, int weight) {
+void add9lengthRoutes(int startNode, int weight){
     for (int ad1 = 0; ad1 < nodeCounts; ad1++)
         if (adMatrix[startNode][ad1])
             for (int ad2 = 0; ad2 < nodeCounts; ad2++)
@@ -228,9 +227,9 @@ void add9lengthRoutes(int startNode, int weight) {
                                                                             linkGravity[ad8][ad9] += weight;
                                                                         }
 
-}
+} // Add gravity for 9-lengths.
 
-void add10lengthRoutes(int startNode, int weight) {
+void add10lengthRoutes(int startNode, int weight){
     for (int ad1 = 0; ad1 < nodeCounts; ad1++)
         if (adMatrix[startNode][ad1])
             for (int ad2 = 0; ad2 < nodeCounts; ad2++)
@@ -264,9 +263,9 @@ void add10lengthRoutes(int startNode, int weight) {
                                                                                     linkGravity[ad9][ad10] += weight;
                                                                                 }
 
-}
+} // Add gravity for 10-lengths.
 
-void add11lengthRoutes(int startNode, int weight) {
+void add11lengthRoutes(int startNode, int weight){
     for (int ad1 = 0; ad1 < nodeCounts; ad1++)
         if (adMatrix[startNode][ad1])
             for (int ad2 = 0; ad2 < nodeCounts; ad2++)
@@ -303,9 +302,9 @@ void add11lengthRoutes(int startNode, int weight) {
                                                                                             linkGravity[ad10][ad11] += weight;
                                                                                         }
 
-}
+} // Add gravity for 11-lengths.
 
-void add12lengthRoutes(int startNode, int weight) {
+void add12lengthRoutes(int startNode, int weight){
     for (int ad1 = 0; ad1 < nodeCounts; ad1++)
         if (adMatrix[startNode][ad1])
             for (int ad2 = 0; ad2 < nodeCounts; ad2++)
@@ -345,9 +344,9 @@ void add12lengthRoutes(int startNode, int weight) {
                                                                                                     linkGravity[ad11][ad12] += weight;
                                                                                                 }
 
-}
+} // Add gravity for 12-lengths.
 
-void add13lengthRoutes(int startNode, int weight) {
+void add13lengthRoutes(int startNode, int weight){
     for (int ad1 = 0; ad1 < nodeCounts; ad1++)
         if (adMatrix[startNode][ad1])
             for (int ad2 = 0; ad2 < nodeCounts; ad2++)
@@ -390,10 +389,9 @@ void add13lengthRoutes(int startNode, int weight) {
                                                                                                             linkGravity[ad12][ad13] += weight;
                                                                                                         }
 
-}
+} // Add gravity for 13-lengths.
 
-
-void add14lengthRoutes(int startNode, int weight) {
+void add14lengthRoutes(int startNode, int weight){
     for (int ad1 = 0; ad1 < nodeCounts; ad1++)
         if (adMatrix[startNode][ad1])
             for (int ad2 = 0; ad2 < nodeCounts; ad2++)
@@ -439,8 +437,7 @@ void add14lengthRoutes(int startNode, int weight) {
                                                                                                                     linkGravity[ad13][ad14] += weight;
                                                                                                         }
 
-}
-
+} // Add gravity for 14-lengths.
 
 void proc3stepGravity(int startNode, int minLength){
     if (minLength == 2){
@@ -498,4 +495,4 @@ void proc3stepGravity(int startNode, int minLength){
         add10lengthRoutes(startNode, TertiaryWeight);
         makeGravitySymmetric();
     }
-}
+} // A function to automate 3-step processing.

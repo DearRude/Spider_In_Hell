@@ -12,6 +12,15 @@ int butterfliesIndex[MAXNODES];
 int coordMatrix[MAXNODES][2]; // lat and lan × number of the nodes × digits of the pixels
 int linkGravity[MAXNODES][MAXNODES];
 
+void clear(){
+#if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
+    system("clear");
+#endif
+
+#if defined(_WIN32) || defined(_WIN64)
+    system("cls");
+#endif
+} // Clears the screen. (Works on Linux and Windows.)
 
 int fileGetMatrix(void){
     // Reads Node counts and Matrix from file.
@@ -147,7 +156,7 @@ int bestMove (int spiderNode){
         }
     }
     return bestNode;
-}
+} // Returns the best move for spider.
 
 int * bestCut(int spiderNode){
     int bestLink[2] = {0, 0};
@@ -164,4 +173,40 @@ int * bestCut(int spiderNode){
             }
         }
     return pBestLink;
+} // Returns a pointer to array of best cut link.
+
+int initTerminalSpider(){
+    clear();
+    printf("%s", TXTspiderInHellAsciiArt);
+    int winStatus = isButterflyIndex(spiderIndex);
+    int loseStatus = distToClosestButterfly(spiderIndex) == -1;
+    while (!winStatus && !loseStatus){
+        // User Turn
+        printf("%s", TXTdevider);
+        printf("%s", TXTspiderTurn);
+        printf("%s", TXTinputSpiderNode);
+        scanf("%d", &spiderIndex);
+        printf("%s", TXTniceChoice);
+
+        // Computer Turn
+        printf("%s", TXTdevider);
+        printf("%s", TXTbutterflyTurn);
+        printf("%s%d %d", TXTcomputerCutchoise, *(bestCut(spiderIndex)), *(bestCut(spiderIndex)+1));
+        adMatrix[*bestCut(spiderIndex)][*(bestCut(spiderIndex)+1)] = 0;
+
+        // Calculate if any wins
+        winStatus = isButterflyIndex(spiderIndex);
+        loseStatus = distToClosestButterfly(spiderIndex) == -1;
+        if (winStatus){
+            printf("%s", TXTdevider);
+            printf("%s", TXTspiderWin);
+            break;
+        }
+        if (loseStatus){
+            printf("%s", TXTdevider);
+            printf("%s", TXTcomputerWin);
+            break;
+        }
+    }
+    printf("%s", TXTniceGame);
 }

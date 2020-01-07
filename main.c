@@ -8,22 +8,16 @@
 
 
 
-int nodeCounts;
-int adMatrix[MAXNODES][MAXNODES];
-int spiderCount;
-int spiderIndex[];
-int butterfliesCount;
-int butterfliesIndex[MAXNODES];
-
-int fileGetMatrix(void);
-
-
-int main() {
+int main(int argc, char * argv[]) {
+    clear();
     printf("Hello, World!\n");
     fileGetMatrix();
     printf("Best move is: %d\n", bestMove(1));
     printf("Best cut is %d %d\n", *bestCut(1), *(bestCut(1)+1));
     printGravityMatrix();
+    int hey;
+    scanf("%d", &hey);
+
 
     return (0);
 }
