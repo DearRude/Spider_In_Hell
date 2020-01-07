@@ -29,8 +29,4 @@ int main() {
 }
 
 
-//TODO: Write a function to add gravity to all routes to butterfly with n length.
-//TODO: Write a function to delete the link with most gravity.
-
-//TODO: Write a function to change the index of spider to the adjacent node by the link with most gravity.
-
+// Todo: Write a function to start a terminal-based game!
