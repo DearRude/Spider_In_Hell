@@ -3,8 +3,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "gravity.h"
+#include "functions.h"
 
-#define MAXNODES 100
+
 
 int nodeCounts;
 int adMatrix[MAXNODES][MAXNODES];
@@ -19,39 +21,16 @@ int fileGetMatrix(void);
 int main() {
     printf("Hello, World!\n");
     fileGetMatrix();
+    printf("Best move is: %d\n", bestMove(1));
+    printf("Best cut is %d %d\n", *bestCut(1), *(bestCut(1)+1));
+    printGravityMatrix();
 
     return (0);
 }
 
-int fileGetMatrix(void){
-    // Reads Node counts and Matrix from file.
-    FILE *map;
-    map = fopen("/home/dearrude/CLionProjects/Spider-In-Hell/graphData", "r+");
-    if (map == NULL){
-        perror("Error finding adMatrix map file. ");
-        return (-1);
-    }
-    nodeCounts = fgetc(map) - '0';
-    //printf("%d", nodeCounts);
-    char chara;
-    int iMatrix = 0, jMatrix = 0;
-    while (!feof(map)){
-        chara = fgetc(map);
-        if (!(chara >= '0' && chara <= '9')) continue; // Pass non-integer numbers.
 
-        if (iMatrix == nodeCounts){ // Go to next line in the adMatrix
-            iMatrix = 0;
-            jMatrix++;
-        }
-        if (jMatrix < nodeCounts - 1) adMatrix[iMatrix++][jMatrix] = chara - '0';
+//TODO: Write a function to add gravity to all routes to butterfly with n length.
+//TODO: Write a function to delete the link with most gravity.
 
-    }
-    for(int i=0; i<nodeCounts; i++) {
-        for (int j = 0; j < nodeCounts; j++) {
-            printf("%d ", adMatrix[i][j]);
-        }
-        printf("\n");
-    }
-    fclose(map);
-    return (0);
-}
+//TODO: Write a function to change the index of spider to the adjacent node by the link with most gravity.
+
