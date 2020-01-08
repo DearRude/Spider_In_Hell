@@ -1,8 +1,4 @@
----
-description: Documentation will be here!
----
-
-# Initial page
+# Getting Started
 
 ### Prequisitives
 
@@ -41,6 +37,12 @@ Run [g]raphic or remain in [t]erminal:t
 ```
 
 When you finished deciding whether you want a GUI or not, it's time to choose the **game mode**. There are two game modes. Each will be elaborated followingly.
+
+
+
+To see how things work, see here...
+
+{% page-ref page="the-alogrithm.md" %}
 
 {% hint style="info" %}
 On all modes, the first turn is with the spider.
