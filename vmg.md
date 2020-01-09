@@ -18,7 +18,7 @@ Basically with FDG drawing of the graph, you can solve the issue of ugly graphs.
 
 ### Visual Matrix Generator
 
-As you may guessed yet, there is a file named VMG in this game's files. It's a `Visual Matrix Generator.`
+As you may have guessed, there is a file named VMG in this game's files. It's a `Visual Matrix Generator.`
 
 You can open `index.html` file and start drawing a matrix. What this little program does is that it creates a graph with force-directed algorithm.
 
