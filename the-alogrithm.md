@@ -22,11 +22,11 @@ Here is a general pseudo code used for implementing BFS:
                  Q.enqueue(w) 
 ```
 
-The algorithm of this game is not merely dependant to BFS; instead it is only used the return **minimal length between the spider and butterflies.** 
+The algorithm of this game is not merely dependent on BFS; instead it is only used the return **minimal length between the spider and butterflies.**
 
 The function `distToClosestButterfly()` is defined and declared based of BFS algorithm. This is also useful when you check the winning status because this function will return `-1` if it can't find any route to butterflies.
 
-Just like normal BFS pseudo code, a queue is needed to implement this algorithm. But this functions uses two pointers on this queue. One for appending to the queue and one for deciding where the current queue is. 
+Just like normal BFS pseudo code, a queue is needed to implement this algorithm. But this functions uses two pointers on this queue. One for appending to the queue and one for deciding where the current queue is.
 
 {% hint style="info" %}
 The search will be over whenever the queue is finished or a route to butterfly is found.
@@ -98,11 +98,10 @@ For 1-length routes, fuzzy algorithm is not used because we have definite decisi
 
 ### Best Move
 
-Best move is a bit trickier when you want to implement fuzzy algorithm. First you need to decide wheater your code is 1-length or not. If not, then you check each adjacencacy of spider-node and select the one with the most gravity.
+Best move is a bit trickier when you want to implement fuzzy algorithm. First you need to decide whether your code is 1-length or not. If not, then you check each adjacency of spider-node and select the one with the most gravity.
 
 For that, `bestMove()` function is used in the code which directly integrates to gravity matrix.
 
 {% hint style="info" %}
-The difference between `bestMove()` and `bestCut()` is that `bestMove` only consider nodes that are adjacent to spider vertex.
+The difference between `bestMove()` and `bestCut()` is that `bestMove` only considers nodes that are adjacent to spider vertex.
 {% endhint %}
-

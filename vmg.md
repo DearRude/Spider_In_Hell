@@ -2,7 +2,7 @@
 
 ### Unknown position problem
 
-When you want make a GUI for this game, there is a subtle but huge problem. That is, the position of the vertexes are no defined and if you place them randomly, an odd and ugly shape will apear.
+When you want make a GUI for this game, there is a subtle but huge problem. That is, the position of the vertexes are no defined and if you place them randomly, an odd and ugly shape will appear.
 
 ![Confusing...](.gitbook/assets/image%20%281%29.png)
 
@@ -18,7 +18,7 @@ Basically with FDG drawing of the graph, you can solve the issue of ugly graphs.
 
 ### Visual Matrix Generator
 
-As you may guessed yet, there is a file named VMG in this game's files. It's a `Visual Matrix Generator.` 
+As you may guessed yet, there is a file named VMG in this game's files. It's a `Visual Matrix Generator.`
 
 You can open `index.html` file and start drawing a matrix. What this little program does is that it creates a graph with force-directed algorithm.
 
@@ -31,4 +31,3 @@ You can select a node and hit `B` to mark as **butterfly**.
 You can also select a node and hit `S` to mark as **spider**.
 
 And at last but not least you can hit `Enter` and **get a input** for your C game. This file also **includes the position** of each vertex. This makes it quite easy to word with GUI and have a little nice game!
-
