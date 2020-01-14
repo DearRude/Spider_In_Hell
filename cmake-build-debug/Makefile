@@ -123,6 +123,114 @@ Spider_In_Hell/fast:
 	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/build
 .PHONY : Spider_In_Hell/fast
 
+graphic/screens/screen_ending.o: graphic/screens/screen_ending.c.o
+
+.PHONY : graphic/screens/screen_ending.o
+
+# target to build an object file
+graphic/screens/screen_ending.c.o:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.o
+.PHONY : graphic/screens/screen_ending.c.o
+
+graphic/screens/screen_ending.i: graphic/screens/screen_ending.c.i
+
+.PHONY : graphic/screens/screen_ending.i
+
+# target to preprocess a source file
+graphic/screens/screen_ending.c.i:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.i
+.PHONY : graphic/screens/screen_ending.c.i
+
+graphic/screens/screen_ending.s: graphic/screens/screen_ending.c.s
+
+.PHONY : graphic/screens/screen_ending.s
+
+# target to generate assembly for a file
+graphic/screens/screen_ending.c.s:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.s
+.PHONY : graphic/screens/screen_ending.c.s
+
+graphic/screens/screen_gameplay.o: graphic/screens/screen_gameplay.c.o
+
+.PHONY : graphic/screens/screen_gameplay.o
+
+# target to build an object file
+graphic/screens/screen_gameplay.c.o:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.o
+.PHONY : graphic/screens/screen_gameplay.c.o
+
+graphic/screens/screen_gameplay.i: graphic/screens/screen_gameplay.c.i
+
+.PHONY : graphic/screens/screen_gameplay.i
+
+# target to preprocess a source file
+graphic/screens/screen_gameplay.c.i:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.i
+.PHONY : graphic/screens/screen_gameplay.c.i
+
+graphic/screens/screen_gameplay.s: graphic/screens/screen_gameplay.c.s
+
+.PHONY : graphic/screens/screen_gameplay.s
+
+# target to generate assembly for a file
+graphic/screens/screen_gameplay.c.s:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.s
+.PHONY : graphic/screens/screen_gameplay.c.s
+
+graphic/screens/screen_logo.o: graphic/screens/screen_logo.c.o
+
+.PHONY : graphic/screens/screen_logo.o
+
+# target to build an object file
+graphic/screens/screen_logo.c.o:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.o
+.PHONY : graphic/screens/screen_logo.c.o
+
+graphic/screens/screen_logo.i: graphic/screens/screen_logo.c.i
+
+.PHONY : graphic/screens/screen_logo.i
+
+# target to preprocess a source file
+graphic/screens/screen_logo.c.i:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.i
+.PHONY : graphic/screens/screen_logo.c.i
+
+graphic/screens/screen_logo.s: graphic/screens/screen_logo.c.s
+
+.PHONY : graphic/screens/screen_logo.s
+
+# target to generate assembly for a file
+graphic/screens/screen_logo.c.s:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.s
+.PHONY : graphic/screens/screen_logo.c.s
+
+graphic/screens/screen_title.o: graphic/screens/screen_title.c.o
+
+.PHONY : graphic/screens/screen_title.o
+
+# target to build an object file
+graphic/screens/screen_title.c.o:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.o
+.PHONY : graphic/screens/screen_title.c.o
+
+graphic/screens/screen_title.i: graphic/screens/screen_title.c.i
+
+.PHONY : graphic/screens/screen_title.i
+
+# target to preprocess a source file
+graphic/screens/screen_title.c.i:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.i
+.PHONY : graphic/screens/screen_title.c.i
+
+graphic/screens/screen_title.s: graphic/screens/screen_title.c.s
+
+.PHONY : graphic/screens/screen_title.s
+
+# target to generate assembly for a file
+graphic/screens/screen_title.c.s:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.s
+.PHONY : graphic/screens/screen_title.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -159,6 +267,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Spider_In_Hell"
 	@echo "... edit_cache"
+	@echo "... graphic/screens/screen_ending.o"
+	@echo "... graphic/screens/screen_ending.i"
+	@echo "... graphic/screens/screen_ending.s"
+	@echo "... graphic/screens/screen_gameplay.o"
+	@echo "... graphic/screens/screen_gameplay.i"
+	@echo "... graphic/screens/screen_gameplay.s"
+	@echo "... graphic/screens/screen_logo.o"
+	@echo "... graphic/screens/screen_logo.i"
+	@echo "... graphic/screens/screen_logo.s"
+	@echo "... graphic/screens/screen_title.o"
+	@echo "... graphic/screens/screen_title.i"
+	@echo "... graphic/screens/screen_title.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

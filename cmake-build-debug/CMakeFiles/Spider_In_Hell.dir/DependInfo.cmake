@@ -4,6 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_ending.c" "/home/dearrude/CLionProjects/Spider-In-Hell/cmake-build-debug/CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.o"
+  "/home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_gameplay.c" "/home/dearrude/CLionProjects/Spider-In-Hell/cmake-build-debug/CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.o"
+  "/home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_logo.c" "/home/dearrude/CLionProjects/Spider-In-Hell/cmake-build-debug/CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.o"
+  "/home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_title.c" "/home/dearrude/CLionProjects/Spider-In-Hell/cmake-build-debug/CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.o"
   "/home/dearrude/CLionProjects/Spider-In-Hell/main.c" "/home/dearrude/CLionProjects/Spider-In-Hell/cmake-build-debug/CMakeFiles/Spider_In_Hell.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

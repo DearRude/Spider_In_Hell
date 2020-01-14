@@ -197,6 +197,9 @@ Spider_In_Hell_BINARY_DIR:STATIC=/home/dearrude/CLionProjects/Spider-In-Hell/cma
 //Value Computed by CMake
 Spider_In_Hell_SOURCE_DIR:STATIC=/home/dearrude/CLionProjects/Spider-In-Hell
 
+//The directory containing a CMake configuration file for raylib.
+raylib_DIR:PATH=raylib_DIR-NOTFOUND
+
 
 ########################
 # INTERNAL cache entries

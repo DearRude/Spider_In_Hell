@@ -70,17 +70,77 @@ CMakeFiles/Spider_In_Hell.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Spider_In_Hell.dir/main.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dearrude/CLionProjects/Spider-In-Hell/main.c -o CMakeFiles/Spider_In_Hell.dir/main.c.s
 
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.o: CMakeFiles/Spider_In_Hell.dir/flags.make
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.o: ../graphic/screens/screen_ending.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dearrude/CLionProjects/Spider-In-Hell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.o   -c /home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_ending.c
+
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_ending.c > CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.i
+
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_ending.c -o CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.s
+
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.o: CMakeFiles/Spider_In_Hell.dir/flags.make
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.o: ../graphic/screens/screen_gameplay.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dearrude/CLionProjects/Spider-In-Hell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.o   -c /home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_gameplay.c
+
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_gameplay.c > CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.i
+
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_gameplay.c -o CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.s
+
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.o: CMakeFiles/Spider_In_Hell.dir/flags.make
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.o: ../graphic/screens/screen_logo.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dearrude/CLionProjects/Spider-In-Hell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.o   -c /home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_logo.c
+
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_logo.c > CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.i
+
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_logo.c -o CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.s
+
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.o: CMakeFiles/Spider_In_Hell.dir/flags.make
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.o: ../graphic/screens/screen_title.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dearrude/CLionProjects/Spider-In-Hell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.o   -c /home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_title.c
+
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_title.c > CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.i
+
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_title.c -o CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.s
+
 # Object files for target Spider_In_Hell
 Spider_In_Hell_OBJECTS = \
-"CMakeFiles/Spider_In_Hell.dir/main.c.o"
+"CMakeFiles/Spider_In_Hell.dir/main.c.o" \
+"CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.o" \
+"CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.o" \
+"CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.o" \
+"CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.o"
 
 # External object files for target Spider_In_Hell
 Spider_In_Hell_EXTERNAL_OBJECTS =
 
 Spider_In_Hell: CMakeFiles/Spider_In_Hell.dir/main.c.o
+Spider_In_Hell: CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.o
+Spider_In_Hell: CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.o
+Spider_In_Hell: CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.o
+Spider_In_Hell: CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.o
 Spider_In_Hell: CMakeFiles/Spider_In_Hell.dir/build.make
 Spider_In_Hell: CMakeFiles/Spider_In_Hell.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dearrude/CLionProjects/Spider-In-Hell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable Spider_In_Hell"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dearrude/CLionProjects/Spider-In-Hell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable Spider_In_Hell"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Spider_In_Hell.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

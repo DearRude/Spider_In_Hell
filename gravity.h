@@ -1,16 +1,18 @@
 //TODO: FIX VISITED PROBLEM FOR LOOPS.
-//TODO: REMINDER: Routes less that 2 length (inluding 1 and 0) should not use 3procGravity algorithm because they have definite answers.
+//TODO: REMINDER: Routes less that 2 length (including 1 and 0) should not use 3procGravity algorithm because they have definite answers.
 
 #ifndef SPIDER_IN_HELL_GRAVITY_H
 #define SPIDER_IN_HELL_GRAVITY_H
+#define MAXNODES 100
 
 #endif //SPIDER_IN_HELL_GRAVITY_H
 
-#define MAXNODES 100
+// Defining Weights
 #define PrimaryWeight 5
 #define SecondaryWeight 3
 #define TertiaryWeight 1
 
+// Declare prototypes
 int nodeCounts;
 int adMatrix[MAXNODES][MAXNODES];
 int spiderCount;
@@ -33,10 +35,14 @@ void makeGravitySymmetric(){
     int sum = 0;
     for (int i = 0; i < nodeCounts; i++)
         for (int j = 0; j < nodeCounts; j++) {
-            sum = linkGravity[i][j] + linkGravity[j][i];
-            linkGravity[i][j] = sum;
-            linkGravity[j][i] = sum;
-            sum = 0;
+            if (i>=j) {
+                sum = linkGravity[i][j] + linkGravity[j][i];
+                // printf("%d,%d: %d ", i, j, sum);
+                linkGravity[i][j] = sum;
+                linkGravity[j][i] = sum;
+                sum = 0;
+                // printf("%d\n", sum);
+            }
         }
 } // Makes the Gravity Matrix symmetric.
 
@@ -49,13 +55,12 @@ void printGravityMatrix(){
     }
 } // Prints the Gravity Matrix.
 
-
 void add2lengthRoutes(int startNode, int weight) {
     for (int ad1 = 0; ad1 < nodeCounts; ad1++)
         if (adMatrix[startNode][ad1])
             for (int ad2 = 0; ad2 < nodeCounts; ad2++)
                 if (adMatrix[ad1][ad2] && isButterflyIndex(ad2)) {
-                    //printf("%d %d %d %d\n", startNode, ad1, ad2, ad3);
+                    printf("%d %d %d\n", startNode, ad1, ad2);
                     linkGravity[startNode][ad1] += weight;
                     linkGravity[ad1][ad2] += weight;
                 }
@@ -68,7 +73,7 @@ void add3lengthRoutes(int startNode, int weight){
                 if (adMatrix[ad1][ad2])
                     for (int ad3 = 0; ad3 < nodeCounts; ad3++)
                         if (adMatrix[ad2][ad3] && isButterflyIndex(ad3)){
-                            //printf("%d %d %d %d\n", startNode, ad1, ad2, ad3);
+                            printf("%d %d %d %d\n", startNode, ad1, ad2, ad3);
                             linkGravity[startNode][ad1] += weight;
                             linkGravity[ad1][ad2] += weight;
                             linkGravity[ad2][ad3] += weight;
@@ -495,4 +500,56 @@ void proc3stepGravity(int startNode, int minLength){
         add10lengthRoutes(startNode, TertiaryWeight);
         makeGravitySymmetric();
     }
+
+    if (minLength == 9){
+        resetGravityMatrix();
+        add9lengthRoutes(startNode, PrimaryWeight);
+        add10lengthRoutes(startNode, SecondaryWeight);
+        add11lengthRoutes(startNode, TertiaryWeight);
+        makeGravitySymmetric();
+    }
+
+    if (minLength == 10){
+        resetGravityMatrix();
+        add10lengthRoutes(startNode, PrimaryWeight);
+        add11lengthRoutes(startNode, SecondaryWeight);
+        add12lengthRoutes(startNode, TertiaryWeight);
+        makeGravitySymmetric();
+    }
+
+
+    if (minLength == 11){
+        resetGravityMatrix();
+        add11lengthRoutes(startNode, PrimaryWeight);
+        add12lengthRoutes(startNode, SecondaryWeight);
+        add13lengthRoutes(startNode, TertiaryWeight);
+        makeGravitySymmetric();
+    }
+
+
+    if (minLength == 12){
+        resetGravityMatrix();
+        add12lengthRoutes(startNode, PrimaryWeight);
+        add13lengthRoutes(startNode, SecondaryWeight);
+        add14lengthRoutes(startNode, TertiaryWeight);
+        makeGravitySymmetric();
+    }
 } // A function to automate 3-step processing.
+
+
+void addNlengthRoutes(int startNode, int length, int weight){
+    int path[length];
+    path[0] = startNode;
+    for (int iter = 1; iter <= length; iter++) {
+        for (int adj = 0; adj < nodeCounts; adj++) {
+            if (adMatrix[startNode][adj]) {
+                path[iter] = adj;
+                startNode = adj;
+                break;
+            }
+        }
+    }
+    for (int i = 0; i < length; i++){
+        printf("%d ", path[i]);
+    }
+}
