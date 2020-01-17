@@ -5,12 +5,6 @@
 #include <stdlib.h>                 // Required for: malloc(), free()
 #include <math.h>                   // Required for: sqrtf(), asinf()
 
-#define MAX_SAMPLES_SPEED       7   // Max speed for samples movement
-#define MIN_SAMPLES_SPEED       3   // Min speed for samples movement
-#define SAMPLES_SPACING       100   // Separation between samples in pixels
-#define SAMPLES_MULTIPLIER    700   // Defines sample data scaling value (it would be adjusted to MAX_GAME_HEIGHT)
-#define MAX_GAME_HEIGHT       400   // Defines max possible amplitude between samples (game area)
-
 //----------------------------------------------------------------------------------
 // Types and Structures Definition
 //----------------------------------------------------------------------------------
@@ -50,9 +44,6 @@ static Rectangle waveRec;
 
 // Samples variables
 static Sample *samples;         // Game samples
-static int collectedSamples;    // Samples collected by player
-static int currentSample;       // Last sample to go through player collect area
-static float waveTime;          // Total sample time in ms
 
 // Resources variables
 static Texture2D texBackground;
@@ -66,57 +57,15 @@ static RenderTexture2D waveTarget;
 static Sound fxSampleOn;        // Collected sample sound
 static Sound fxSampleOff;       // Miss sample sound
 static Sound fxPause;           // Pause sound
-// Debug variables
 
 //------------------------------------------------------------------------------------
 // Module Functions Declaration (local)
 //------------------------------------------------------------------------------------
-static void DrawSamplesMap(Sample *samples, int sampleCount, int playedSamples, Rectangle bounds, Color color);
+void expandGraph(int coordMatrix[nodeCounts][2]);
 
 //----------------------------------------------------------------------------------
 // Gameplay Screen Functions Definition
 //----------------------------------------------------------------------------------
-void expandGraph(int coordMatrix[nodeCounts][2]){
-    int leftMost = 1280, topMost = 720;
-    for (int i = 0; i < nodeCounts; i++){
-        if (leftMost > coordMatrix[i][0]) leftMost = coordMatrix[i][0];
-        if (topMost > coordMatrix[i][1]) topMost = coordMatrix[i][1];
-    }
-
-    for (int i2 = 0; i2 < nodeCounts; i2++){
-        coordMatrix[i2][0] -= (leftMost);
-        coordMatrix[i2][1] -= (topMost);
-    }
-    int isScaleable = 0;
-    for (float scale = 20.0f; !isScaleable; scale-=1){
-        for (int i3 = 0; i3 < nodeCounts; i3++){
-            coordMatrix[i3][0] *= scale;
-            coordMatrix[i3][1] *= scale;
-        }
-
-        isScaleable = 1;
-        for (int i4 = 0; i4 < nodeCounts; i4++){
-            if (coordMatrix[i4][0] > (1280 - 100) || coordMatrix[i4][1] > (720-160-100)) {
-                isScaleable = 0;
-                break;
-            }
-        }
-        if (isScaleable){
-            for (int i4 = 0; i4 < nodeCounts; i4++){
-                coordMatrix[i4][0] += 50;
-                coordMatrix[i4][1] += 50;
-            }
-        }
-        else {
-            for (int i5 = 0; i5 < nodeCounts; i5++){
-                coordMatrix[i5][0] /= scale;
-                coordMatrix[i5][1] /= scale;
-            }
-        }
-
-    }
-}
-
 // Gameplay Screen Initialization logic
 void InitGameplayScreen(void)
 {
@@ -154,15 +103,13 @@ void InitGameplayScreen(void)
     // Initialize wave and samples data
     Wave wave = LoadWave("graphic/resources/audio/wave.ogg");
     float *waveData = GetWaveData(wave);
-    
+
     // We calculate the required parameters to adjust audio time to gameplay time
     // that way samples collected correspond to audio playing
     // Synchonization is not perfect due to possible rounding issues (float to int)
 
     // We don't need wave any more (already got waveData)
     UnloadWave(wave);
-    
-    collectedSamples = 0;
 
     // Init samples
     samples = (Sample *)malloc(nodeCounts*sizeof(Sample));
@@ -183,8 +130,6 @@ void InitGameplayScreen(void)
         samples[i].color = RED;
         samples[i].renderable = true;
     }
-    currentSample = 0;
-
     free(waveData);
     
     // Load and start playing music
@@ -334,24 +279,43 @@ int FinishGameplayScreen(void)
 //------------------------------------------------------------------------------------
 // Module Functions Definitions (local)
 //------------------------------------------------------------------------------------
-
-// Draw samples in wave form (including already played samples in a different color!)
-// NOTE: For proper visualization, MSAA x4 is recommended, alternatively
-// it should be rendered to a bigger texture and then scaled down with 
-// bilinear/trilinear texture filtering
-static void DrawSamplesMap(Sample *samples, int sampleCount, int playedSamples, Rectangle bounds, Color color)
-{
-    // NOTE: We just pick a sample to draw every increment
-    float sampleIncrementX = (float)bounds.width/sampleCount;
-
-    Color col = color;
-
-    for (int i = 0; i < sampleCount - 1; i++)
-    {
-        if (i < playedSamples) col = GRAY;
-        else col = color;
-
-        DrawLineV((Vector2){ (float)bounds.x + (float)i*sampleIncrementX, (float)(bounds.y + bounds.height/2) + samples[i].value*bounds.height },
-                  (Vector2){ (float)bounds.x + (float)(i + 1)*sampleIncrementX, (float)(bounds.y  + bounds.height/2) + + samples[i + 1].value*bounds.height }, col);
+void expandGraph(int coordMatrix[nodeCounts][2]){
+    int leftMost = 1280, topMost = 720;
+    for (int i = 0; i < nodeCounts; i++){
+        if (leftMost > coordMatrix[i][0]) leftMost = coordMatrix[i][0];
+        if (topMost > coordMatrix[i][1]) topMost = coordMatrix[i][1];
     }
-}
+
+    for (int i2 = 0; i2 < nodeCounts; i2++){
+        coordMatrix[i2][0] -= (leftMost);
+        coordMatrix[i2][1] -= (topMost);
+    }
+    int isScaleable = 0;
+    for (float scale = 20.0f; !isScaleable; scale-=1){
+        for (int i3 = 0; i3 < nodeCounts; i3++){
+            coordMatrix[i3][0] *= scale;
+            coordMatrix[i3][1] *= scale;
+        }
+
+        isScaleable = 1;
+        for (int i4 = 0; i4 < nodeCounts; i4++){
+            if (coordMatrix[i4][0] > (1280 - 100) || coordMatrix[i4][1] > (720-160-100)) {
+                isScaleable = 0;
+                break;
+            }
+        }
+        if (isScaleable){
+            for (int i4 = 0; i4 < nodeCounts; i4++){
+                coordMatrix[i4][0] += 50;
+                coordMatrix[i4][1] += 50;
+            }
+        }
+        else {
+            for (int i5 = 0; i5 < nodeCounts; i5++){
+                coordMatrix[i5][0] /= scale;
+                coordMatrix[i5][1] /= scale;
+            }
+        }
+
+    }
+} // A function to scale the positions.

@@ -182,7 +182,7 @@ void initTerminalSpider(){
         /* TXTinputSpiderNode */printf("Please enter an index for spider to move:");
         int newSpiderIndex;
         scanf("%d", &newSpiderIndex);
-        while (!isLinkBetween(spiderIndex, newSpiderIndex)){
+        while (isLinkBetween(spiderIndex, newSpiderIndex)){
             printf("⛔  Bad choice. Please try again:");
             scanf("%d", &newSpiderIndex);
         }

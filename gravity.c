@@ -40,7 +40,7 @@ void add2lengthRoutes(int startNode, int weight) {
         if (adMatrix[startNode][ad1])
             for (int ad2 = 0; ad2 < nodeCounts; ad2++)
                 if (adMatrix[ad1][ad2] && isButterflyIndex(ad2)) {
-                    printf("%d %d %d\n", startNode, ad1, ad2);
+                    //printf("%d %d %d\n", startNode, ad1, ad2);
                     linkGravity[startNode][ad1] += weight;
                     linkGravity[ad1][ad2] += weight;
                 }
@@ -53,7 +53,7 @@ void add3lengthRoutes(int startNode, int weight){
                 if (adMatrix[ad1][ad2])
                     for (int ad3 = 0; ad3 < nodeCounts; ad3++)
                         if (adMatrix[ad2][ad3] && isButterflyIndex(ad3)){
-                            printf("%d %d %d %d\n", startNode, ad1, ad2, ad3);
+                            //printf("%d %d %d %d\n", startNode, ad1, ad2, ad3);
                             linkGravity[startNode][ad1] += weight;
                             linkGravity[ad1][ad2] += weight;
                             linkGravity[ad2][ad3] += weight;
