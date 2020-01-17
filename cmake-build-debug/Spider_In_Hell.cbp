@@ -78,6 +78,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/dearrude/CLionProjects/Spider-In-Hell/gameFlow.c">
+			<Option target="Spider_In_Hell"/>
+		</Unit>
 		<Unit filename="/home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_ending.c">
 			<Option target="Spider_In_Hell"/>
 		</Unit>
@@ -88,6 +91,9 @@
 			<Option target="Spider_In_Hell"/>
 		</Unit>
 		<Unit filename="/home/dearrude/CLionProjects/Spider-In-Hell/graphic/screens/screen_title.c">
+			<Option target="Spider_In_Hell"/>
+		</Unit>
+		<Unit filename="/home/dearrude/CLionProjects/Spider-In-Hell/gravity.c">
 			<Option target="Spider_In_Hell"/>
 		</Unit>
 		<Unit filename="/home/dearrude/CLionProjects/Spider-In-Hell/main.c">

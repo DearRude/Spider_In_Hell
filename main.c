@@ -34,19 +34,19 @@ int main(int argc, char * argv[]) {
     printf("Hello, World!\n");
     fileGetMatrix();
 //    resetGravityMatrix();
-//    //add3lengthRoutes(spiderIndex, 5);
-//    //makeGravitySymmetric();
-//    //printGravityMatrix();
-//    addNlengthRoutes(spiderIndex, 4, 5);
-//
-//
-//
+//    printf("%d\n", distToClosestButterfly(spiderIndex));
+//    add3lengthRoutes(spiderIndex, 5);
+//    makeGravitySymmetric();
+//    printGravityMatrix();
+    //addNlengthRoutes(spiderIndex, 4, 5);
+
+
+
     char terminalMode;
     printf("Run [g]raphic or remain in [t]erminal:");
     scanf(" %c", &terminalMode);
     while (1) {
         if (terminalMode == 'g') {
-            printf("Still in progress...\n");
             // Initialization
             //---------------------------------------------------------
             InitWindow(screenWidth, screenHeight, "Spider in Hell");

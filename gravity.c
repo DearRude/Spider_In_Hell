@@ -533,5 +533,3 @@ void addNlengthRoutes(int startNode, int length, int weight){
         printf("%d ", path[i]);
     }
 }
-
-#endif // Endif define gravity header.

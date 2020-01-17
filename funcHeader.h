@@ -15,6 +15,11 @@ int butterfliesIndex[MAXNODES];
 int coordMatrix[MAXNODES][2]; // lat and lan × number of the nodes × digits of the pixels
 int linkGravity[MAXNODES][MAXNODES];
 
+//Declaring Weights
+#define PrimaryWeight 5
+#define SecondaryWeight 3
+#define TertiaryWeight 1
+
 void clear();// Clears the screen. (Works on Linux and Windows.)
 
 int fileGetMatrix(void); // A function to get info from graphData file.

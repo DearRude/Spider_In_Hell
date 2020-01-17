@@ -1,7 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "funcHeader.h"
-#define MAXNODES 100
 
 void clear(){
 #if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
@@ -22,14 +19,14 @@ int fileGetMatrix(void){
         return (-1);
     }
     fscanf(map, "%d", &nodeCounts);
-    char chara;
+    int chara;
     int iMatrix = 0, jMatrix = 0, iButter = 0, iCoord = 0;
     int statMatrix = 0, statNumSpider = 0, statPosSpider = 0, statNumButterflies = 0, statPosButterflies = 0;
 
     while (!feof(map)){
-        fscanf(map, "%c", &chara);
+        fscanf(map, "%d", &chara);
 
-        if (!(chara >= '0' && chara <= '9')) continue; // Pass non-integer numbers.
+        //if (!(chara >= '0' && chara <= '9')) continue; // Pass non-integer numbers.
 
         if (!statMatrix){ // Get Matrix section.
             if (iMatrix == nodeCounts){ // Go to next line in the adMatrix
@@ -37,25 +34,25 @@ int fileGetMatrix(void){
                 jMatrix++;
             }
             if (jMatrix == nodeCounts - 1 && iMatrix == nodeCounts - 1) statMatrix = 1;
-            adMatrix[iMatrix++][jMatrix] = chara - '0';} // Get Matrix.
+            adMatrix[iMatrix++][jMatrix] = chara;} // Get Matrix.
 
         else if (!statNumSpider){
-            spiderCount = chara - '0';
+            spiderCount = chara;
             statNumSpider = 1;
         } // Get number of spiders.
 
         else if (!statPosSpider){
-            spiderIndex = chara - '0';
+            spiderIndex = chara;
             statPosSpider = 1;
         } // Get position of the spiders.
 
         else if (!statNumButterflies){
-            butterfliesCount = chara - '0';
+            butterfliesCount = chara;
             statNumButterflies = 1;
         } // Get the Number of the butterflies.
 
         else if (!statPosButterflies){
-            butterfliesIndex[iButter++] = chara - '0';
+            butterfliesIndex[iButter++] = chara;
             if (iButter == butterfliesCount - 1) {statPosButterflies = 1;}
         } // Get the position of the butterflies.
 
@@ -63,7 +60,7 @@ int fileGetMatrix(void){
             while (iCoord < nodeCounts){
                 fscanf(map, "%d %d", &coordMatrix[iCoord][0], &coordMatrix[iCoord][1]);
                 iCoord++;
-                butterfliesIndex[iButter] = chara - '0';
+                butterfliesIndex[iButter] = chara;
             }
         } // Get the coordinates of the nodes.
     }

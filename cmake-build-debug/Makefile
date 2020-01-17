@@ -123,6 +123,33 @@ Spider_In_Hell/fast:
 	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/build
 .PHONY : Spider_In_Hell/fast
 
+gameFlow.o: gameFlow.c.o
+
+.PHONY : gameFlow.o
+
+# target to build an object file
+gameFlow.c.o:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/gameFlow.c.o
+.PHONY : gameFlow.c.o
+
+gameFlow.i: gameFlow.c.i
+
+.PHONY : gameFlow.i
+
+# target to preprocess a source file
+gameFlow.c.i:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/gameFlow.c.i
+.PHONY : gameFlow.c.i
+
+gameFlow.s: gameFlow.c.s
+
+.PHONY : gameFlow.s
+
+# target to generate assembly for a file
+gameFlow.c.s:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/gameFlow.c.s
+.PHONY : gameFlow.c.s
+
 graphic/screens/screen_ending.o: graphic/screens/screen_ending.c.o
 
 .PHONY : graphic/screens/screen_ending.o
@@ -231,6 +258,33 @@ graphic/screens/screen_title.c.s:
 	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.s
 .PHONY : graphic/screens/screen_title.c.s
 
+gravity.o: gravity.c.o
+
+.PHONY : gravity.o
+
+# target to build an object file
+gravity.c.o:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/gravity.c.o
+.PHONY : gravity.c.o
+
+gravity.i: gravity.c.i
+
+.PHONY : gravity.i
+
+# target to preprocess a source file
+gravity.c.i:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/gravity.c.i
+.PHONY : gravity.c.i
+
+gravity.s: gravity.c.s
+
+.PHONY : gravity.s
+
+# target to generate assembly for a file
+gravity.c.s:
+	$(MAKE) -f CMakeFiles/Spider_In_Hell.dir/build.make CMakeFiles/Spider_In_Hell.dir/gravity.c.s
+.PHONY : gravity.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -267,6 +321,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Spider_In_Hell"
 	@echo "... edit_cache"
+	@echo "... gameFlow.o"
+	@echo "... gameFlow.i"
+	@echo "... gameFlow.s"
 	@echo "... graphic/screens/screen_ending.o"
 	@echo "... graphic/screens/screen_ending.i"
 	@echo "... graphic/screens/screen_ending.s"
@@ -279,6 +336,9 @@ help:
 	@echo "... graphic/screens/screen_title.o"
 	@echo "... graphic/screens/screen_title.i"
 	@echo "... graphic/screens/screen_title.s"
+	@echo "... gravity.o"
+	@echo "... gravity.i"
+	@echo "... gravity.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

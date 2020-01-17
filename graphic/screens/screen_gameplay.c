@@ -1,7 +1,6 @@
 #include "raylib.h"
 #include "screens.h"
 #include "../../funcHeader.h"
-#include <stdio.h>
 
 #include <stdlib.h>                 // Required for: malloc(), free()
 #include <math.h>                   // Required for: sqrtf(), asinf()
@@ -77,6 +76,46 @@ static void DrawSamplesMap(Sample *samples, int sampleCount, int playedSamples, 
 //----------------------------------------------------------------------------------
 // Gameplay Screen Functions Definition
 //----------------------------------------------------------------------------------
+void expandGraph(int coordMatrix[nodeCounts][2]){
+    int leftMost = 1280, topMost = 720;
+    for (int i = 0; i < nodeCounts; i++){
+        if (leftMost > coordMatrix[i][0]) leftMost = coordMatrix[i][0];
+        if (topMost > coordMatrix[i][1]) topMost = coordMatrix[i][1];
+    }
+
+    for (int i2 = 0; i2 < nodeCounts; i2++){
+        coordMatrix[i2][0] -= (leftMost);
+        coordMatrix[i2][1] -= (topMost);
+    }
+    int isScaleable = 0;
+    for (float scale = 20.0f; !isScaleable; scale-=1){
+        for (int i3 = 0; i3 < nodeCounts; i3++){
+            coordMatrix[i3][0] *= scale;
+            coordMatrix[i3][1] *= scale;
+        }
+
+        isScaleable = 1;
+        for (int i4 = 0; i4 < nodeCounts; i4++){
+            if (coordMatrix[i4][0] > (1280 - 100) || coordMatrix[i4][1] > (720-160-100)) {
+                isScaleable = 0;
+                break;
+            }
+        }
+        if (isScaleable){
+            for (int i4 = 0; i4 < nodeCounts; i4++){
+                coordMatrix[i4][0] += 50;
+                coordMatrix[i4][1] += 50;
+            }
+        }
+        else {
+            for (int i5 = 0; i5 < nodeCounts; i5++){
+                coordMatrix[i5][0] /= scale;
+                coordMatrix[i5][1] /= scale;
+            }
+        }
+
+    }
+}
 
 // Gameplay Screen Initialization logic
 void InitGameplayScreen(void)
@@ -127,7 +166,7 @@ void InitGameplayScreen(void)
 
     // Init samples
     samples = (Sample *)malloc(nodeCounts*sizeof(Sample));
-
+    expandGraph(coordMatrix);
     // Initialize samples
     for (int i = 0; i < nodeCounts; i++)
     {
