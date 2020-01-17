@@ -1,20 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
-
-#ifndef SPIDER_IN_HELL_FUNCTIONS_H
-#define SPIDER_IN_HELL_FUNCTIONS_H
-
-
-#endif //SPIDER_IN_HELL_FUNCTIONS_H
+#include "funcHeader.h"
 #define MAXNODES 100
-int nodeCounts;
-int adMatrix[MAXNODES][MAXNODES];
-int spiderCount;
-int spiderIndex;
-int butterfliesCount;
-int butterfliesIndex[MAXNODES];
-int coordMatrix[MAXNODES][2]; // lat and lan × number of the nodes × digits of the pixels
-int linkGravity[MAXNODES][MAXNODES];
 
 void clear(){
 #if defined(__linux__) || defined(__unix__) || defined(__APPLE__)

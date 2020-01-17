@@ -1,10 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>              // Required for: printf()
-#include <string.h>             // Required for: strcpy()
-
-
-#include "gravity.h"
-//#include "functions.h"
+#include "funcHeader.h"
 #include "raylib.h"
 #include "graphic/screens/screens.h"    // NOTE: Defines global variable: currentScreen
 
@@ -29,11 +23,9 @@ static int transToScreen = -1;
 // Local Functions Declaration
 //----------------------------------------------------------------------------------
 static void ChangeToScreen(int screen);     // No transition effect
-
 static void TransitionToScreen(int screen);
 static void UpdateTransition(void);
 static void DrawTransition(void);
-
 static void UpdateDrawFrame(void);          // Update and Draw one frame
 
 

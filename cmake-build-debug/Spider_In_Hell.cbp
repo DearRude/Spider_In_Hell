@@ -29,14 +29,14 @@
 			</Target>
 			<Target title="Spider_In_Hell">
 				<Option output="/home/dearrude/CLionProjects/Spider-In-Hell/cmake-build-debug/Spider_In_Hell" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/dearrude/CLionProjects/Spider-In-Hell/cmake-build-debug"/>
+				<Option working_dir=""/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed"/>
 					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
@@ -49,14 +49,14 @@
 			</Target>
 			<Target title="Spider_In_Hell/fast">
 				<Option output="/home/dearrude/CLionProjects/Spider-In-Hell/cmake-build-debug/Spider_In_Hell" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/dearrude/CLionProjects/Spider-In-Hell/cmake-build-debug"/>
+				<Option working_dir=""/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include-fixed"/>
 					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
 				</Compiler>

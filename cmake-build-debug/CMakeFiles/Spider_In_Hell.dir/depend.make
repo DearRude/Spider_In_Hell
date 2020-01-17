@@ -4,7 +4,7 @@
 CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.o: ../graphic/screens/screen_ending.c
 CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_ending.c.o: ../graphic/screens/screens.h
 
-CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.o: ../functions.h
+CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.o: ../funcHeader.h
 CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.o: ../graphic/screens/screen_gameplay.c
 CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_gameplay.c.o: ../graphic/screens/screens.h
 
@@ -14,7 +14,7 @@ CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_logo.c.o: ../graphic/screen
 CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.o: ../graphic/screens/screen_title.c
 CMakeFiles/Spider_In_Hell.dir/graphic/screens/screen_title.c.o: ../graphic/screens/screens.h
 
+CMakeFiles/Spider_In_Hell.dir/main.c.o: ../funcHeader.h
 CMakeFiles/Spider_In_Hell.dir/main.c.o: ../graphic/screens/screens.h
-CMakeFiles/Spider_In_Hell.dir/main.c.o: ../gravity.h
 CMakeFiles/Spider_In_Hell.dir/main.c.o: ../main.c
 

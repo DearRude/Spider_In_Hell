@@ -1,26 +1,6 @@
 //TODO: FIX VISITED PROBLEM FOR LOOPS.
 //TODO: REMINDER: Routes less that 2 length (including 1 and 0) should not use 3procGravity algorithm because they have definite answers.
-
-#ifndef SPIDER_IN_HELL_GRAVITY_H
-#define SPIDER_IN_HELL_GRAVITY_H
-#define MAXNODES 100
-
-#endif //SPIDER_IN_HELL_GRAVITY_H
-
-// Defining Weights
-#define PrimaryWeight 5
-#define SecondaryWeight 3
-#define TertiaryWeight 1
-
-// Declare prototypes
-int nodeCounts;
-int adMatrix[MAXNODES][MAXNODES];
-int spiderCount;
-int spiderIndex;
-int butterfliesCount;
-int butterfliesIndex[MAXNODES];
-int coordMatrix[MAXNODES][2]; // lat and lan × number of the nodes × digits of the pixels
-int linkGravity[MAXNODES][MAXNODES];
+#include "funcHeader.h"
 
 int isButterflyIndex(int index);
 
@@ -553,3 +533,5 @@ void addNlengthRoutes(int startNode, int length, int weight){
         printf("%d ", path[i]);
     }
 }
+
+#endif // Endif define gravity header.
