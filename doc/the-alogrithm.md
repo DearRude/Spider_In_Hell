@@ -1,6 +1,6 @@
 # The Alogrithm
 
-### BFS and minimal routes
+## BFS and minimal routes
 
 **Breadth-first search** \(**BFS**\) is an algorithm for traversing or searching [tree](https://en.wikipedia.org/wiki/Tree_data_structure) or [graph](https://en.wikipedia.org/wiki/Graph_%28data_structure%29) data structures. It starts at the tree root \(or some arbitrary node of a graph, sometimes referred to as a 'search key'\), and explores all of the neighbor nodes at the present depth prior to moving on to the nodes at the next depth level.
 
@@ -19,7 +19,7 @@ Here is a general pseudo code used for implementing BFS:
              if w is not labeled as discovered then
                 label w as discovered
                  w.parent := v
-                 Q.enqueue(w) 
+                 Q.enqueue(w)
 ```
 
 The algorithm of this game is not merely dependent on BFS; instead it is only used the return **minimal length between the spider and butterflies.**
@@ -54,9 +54,7 @@ while (queue is not -2)
 
 In this, additional numbers `-1` and `-2` are used. `-2` represents the function being empty. `-1` is added to queue as an interval to show distance will be increased.
 
-
-
-### Think [Fuzzy](https://en.wikipedia.org/wiki/Fuzzy_mathematics)
+## Think [Fuzzy](https://en.wikipedia.org/wiki/Fuzzy_mathematics)
 
 We know what adjacency matrix is \(if don't see [here](https://en.wikipedia.org/wiki/Adjacency_matrix)\) and shows if there is an edge between two vertexes by having values of `0` and `1`.
 
@@ -84,9 +82,7 @@ If minimal length is 1 then the fuzzy algorithm won't be used because there is a
 
 To evaluate the gravity matrix `proc3stepGravity()` function is used.
 
-
-
-### Best Cut
+## Best Cut
 
 While you understand the philosophy the fuzzy thinking about this process, finding best cut is simple. You only need to find the edge with most gravity and cut it to make the graph lighter 😼
 
@@ -96,7 +92,7 @@ For that, `bestCut()` function is used in the code which directly integrates to 
 For 1-length routes, fuzzy algorithm is not used because we have definite decision there.
 {% endhint %}
 
-### Best Move
+## Best Move
 
 Best move is a bit trickier when you want to implement fuzzy algorithm. First you need to decide whether your code is 1-length or not. If not, then you check each adjacency of spider-node and select the one with the most gravity.
 
@@ -105,3 +101,4 @@ For that, `bestMove()` function is used in the code which directly integrates to
 {% hint style="info" %}
 The difference between `bestMove()` and `bestCut()` is that `bestMove` only considers nodes that are adjacent to spider vertex.
 {% endhint %}
+

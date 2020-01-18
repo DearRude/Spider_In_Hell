@@ -46,7 +46,7 @@ When you finished deciding whether you want a GUI or not, it's time to choose th
 
 To see how things work, see here...
 
-{% page-ref page="the-alogrithm.md" %}
+{% page-ref page="doc/the-alogrithm.md" %}
 
 {% hint style="info" %}
 The first turn in every run is with the spider regardless of mode.
