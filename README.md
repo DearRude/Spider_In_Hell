@@ -16,16 +16,22 @@
 ➔ unzip Spider-In-Hell.zip
 ```
 
-1. Compile the game using `gcc`:
+2. Generate Makerfile using `cmake`:
 
 ```text
-➔ gcc -o Spider-In-Hell main.c
+➔ mkdir build && cd build && cmake -S .. -B .
 ```
 
-1. Run the game and enjoy it!
+3. Compile the game using `make`:
 
 ```text
-➔ ./Spider-In-Hell
+➔ make
+```
+
+4. Run the game and Have fun!
+
+```text
+➔ ./Spider_In_Hell
 ```
 
 ## How to Play?
