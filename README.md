@@ -10,25 +10,33 @@
 
 **Note**: Installation is only supported on GNU/Linux PC. Successful build is not guaranteed work on Windows or macOS.
 
-1. Unzip the downloaded file using unzip command on Linux or any other program on Windows.
+1. Download and install raylib library \(See more [here](https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux)\).
 
 ```text
-➔ unzip Spider-In-Hell.zip
+➔ git clone https://github.com/raysan5/raylib.git raylib
+➔ cd raylib
+➔ mkdir build && cd build
+➔ cmake -DSHARED=ON -DSTATIC=ON ..
+➔ make
+➔ make install
 ```
 
-2. Generate Makerfile using `cmake`:
+2. \(Optional\) You can go to VMG directory, generate a graph and put its data in near `main.c` file. \(Read more in VMG section\)
+
+3. Generate Makefile using `cmake`:
 
 ```text
-➔ mkdir build && cd build && cmake -S .. -B .
+➔ mkdir build && cd build 
+➔ cmake -S .. -B .
 ```
 
-3. Compile the game using `make`:
+4. Compile the game using `make`:
 
 ```text
 ➔ make
 ```
 
-4. Run the game and Have fun!
+5. Run the game and Have fun!
 
 ```text
 ➔ ./Spider_In_Hell
