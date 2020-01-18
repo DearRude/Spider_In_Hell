@@ -28,5 +28,7 @@ You can select a node and hit `B` to mark as **butterfly**.
 
 You can also select a node and hit `S` to mark as **spider**.
 
-And at last but not least you can hit `Enter` and **get a input** for your C game. This file also **includes the position** of each vertex. This makes it quite easy to word with GUI and have a little nice game!
+And at last but not least you can hit `Enter` and **get a input** for your C game. At least put the file in the same directory as `main.c` is and you're good to go!
+
+ This file also **includes the position** of each vertex. This makes it quite easy to word with GUI and have a little nice game!
 
