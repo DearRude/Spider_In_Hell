@@ -94,5 +94,5 @@ However if entered in Guardian mode, first hit the **Start button** for spider t
 On each mode, once game finished, you'll be redirected to Win or Lose screen!
 {% endhint %}
 
-Have fun and read more about the game if interested!
+Have fun and read more about the game in doc directory if interested!
 
