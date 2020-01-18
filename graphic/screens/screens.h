@@ -4,7 +4,7 @@
 //----------------------------------------------------------------------------------
 // Types and Structures Definition
 //----------------------------------------------------------------------------------
-typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING } GameScreen;
+typedef enum GameScreen { LOGO = 0, TITLE, Butterfly, Spider, ENDING } GameScreen;
 
 //----------------------------------------------------------------------------------
 // Global Variables Definition
@@ -37,13 +37,23 @@ void UnloadTitleScreen(void);
 int FinishTitleScreen(void);
 
 //----------------------------------------------------------------------------------
-// Gameplay Screen Functions Declaration
+// SpiderPlay Screen Functions Declaration
 //----------------------------------------------------------------------------------
-void InitGameplayScreen(void);
-void UpdateGameplayScreen(void);
-void DrawGameplayScreen(void);
-void UnloadGameplayScreen(void);
-int FinishGameplayScreen(void);
+void InitSpiderplayScreen(void);
+void UpdateSpiderplayScreen(void);
+void DrawSpiderplayScreen(void);
+void UnloadSpiderplayScreen(void);
+int FinishSpiderplayScreen(void);
+
+//----------------------------------------------------------------------------------
+// ButterflyPlay Screen Functions Declaration
+//----------------------------------------------------------------------------------
+void InitButterflyplayScreen(void);
+void UpdateButterflyplayScreen(void);
+void DrawButterflyplayScreen(void);
+void UnloadButterflyplayScreen(void);
+int FinishButterflyplayScreen(void);
+
 
 //----------------------------------------------------------------------------------
 // Ending Screen Functions Declaration

@@ -515,21 +515,3 @@ void proc3stepGravity(int startNode, int minLength){
         makeGravitySymmetric();
     }
 } // A function to automate 3-step processing.
-
-
-void addNlengthRoutes(int startNode, int length, int weight){
-    int path[length];
-    path[0] = startNode;
-    for (int iter = 1; iter <= length; iter++) {
-        for (int adj = 0; adj < nodeCounts; adj++) {
-            if (adMatrix[startNode][adj]) {
-                path[iter] = adj;
-                startNode = adj;
-                break;
-            }
-        }
-    }
-    for (int i = 0; i < length; i++){
-        printf("%d ", path[i]);
-    }
-}

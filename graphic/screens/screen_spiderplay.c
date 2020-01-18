@@ -31,7 +31,7 @@ typedef struct Sample {
 // Global Variables Definition (local to this module)
 //----------------------------------------------------------------------------------
 
-// Gameplay screen global variables
+// Spiderplay screen global variables
 static int framesCounter;
 static int finishScreen;
 static bool pause;
@@ -61,24 +61,24 @@ static Sound fxPause;           // Pause sound
 //------------------------------------------------------------------------------------
 // Module Functions Declaration (local)
 //------------------------------------------------------------------------------------
-void expandGraph(int coordMatrix[nodeCounts][2]);
+void expandGraphSpider(int coordMatrix[nodeCounts][2]);
 
 //----------------------------------------------------------------------------------
-// Gameplay Screen Functions Definition
+// Spiderplay Screen Functions Definition
 //----------------------------------------------------------------------------------
-// Gameplay Screen Initialization logic
-void InitGameplayScreen(void)
+// Spiderplay Screen Initialization logic
+void InitSpiderplayScreen(void)
 {
     framesCounter = 0;
     finishScreen = 0;
     pause = false;
     endingStatus = 0;
-    
+
     // Textures loading
     texBackground = LoadTexture("graphic/resources/textures/nbackground_gameplay.png");
     texPlayer = LoadTexture("graphic/resources/textures/player.png");
     texSampleMid = LoadTexture("graphic/resources/textures/sample_mid.png");
-    
+
     waveRec = (Rectangle){ 32, 32, 1280 - 64, 105 };
     waveTarget = LoadRenderTexture(waveRec.width, waveRec.height);
 
@@ -86,25 +86,25 @@ void InitGameplayScreen(void)
     fxSampleOn = LoadSound("graphic/resources/audio/sample_on.wav");
     fxSampleOff = LoadSound("graphic/resources/audio/sample_off.wav");
     fxPause = LoadSound("graphic/resources/audio/pause.wav");
-    
+
     SetSoundVolume(fxSampleOn, 0.6f);
     SetSoundVolume(fxPause, 0.5f);
 
     // Initialize player data
     playerArea = (Rectangle){ 0, 0, 1280, 720 };
-    
+
     player.width = 20;
     player.height = 60;
     player.speed = (Vector2){ 15, 15 };
     player.color = GOLD;
-    player.position = (Vector2){ playerArea.x + playerArea.width/2 - texPlayer.width/2, 
+    player.position = (Vector2){ playerArea.x + playerArea.width/2 - texPlayer.width/2,
                                  playerArea.y + playerArea.height/2 - texPlayer.height/2 };
 
     // Initialize wave and samples data
     Wave wave = LoadWave("graphic/resources/audio/wave.ogg");
     float *waveData = GetWaveData(wave);
 
-    // We calculate the required parameters to adjust audio time to gameplay time
+    // We calculate the required parameters to adjust audio time to Spiderplay time
     // that way samples collected correspond to audio playing
     // Synchonization is not perfect due to possible rounding issues (float to int)
 
@@ -113,34 +113,33 @@ void InitGameplayScreen(void)
 
     // Init samples
     samples = (Sample *)malloc(nodeCounts*sizeof(Sample));
-    expandGraph(coordMatrix);
+    expandGraphSpider(coordMatrix);
     // Initialize samples
     for (int i = 0; i < nodeCounts; i++)
     {
         //samples[i].value = waveData[i*samplesDivision]*sampleScaleFactor;   // Normalized value [-1.0..1.0]
         samples[i].position.x = coordMatrix[i][0];
         samples[i].position.y = coordMatrix[i][1] + 160;
-        
+
         //if (samples[i].position.y > GetScreenHeight()/2 + MAX_GAME_HEIGHT/2) samples[i].position.y = GetScreenHeight()/2 - MAX_GAME_HEIGHT/2;
         //else if (samples[i].position.y < GetScreenHeight()/2 - MAX_GAME_HEIGHT/2) samples[i].position.y = GetScreenHeight()/2 + MAX_GAME_HEIGHT/2;
-        
+
         samples[i].radius = 6;
         samples[i].active = true;
         samples[i].collected = false;
-        samples[i].color = RED;
         samples[i].renderable = true;
+        samples[i].color = DARKBROWN;
     }
     free(waveData);
-    
+
     // Load and start playing music
     // NOTE: Music is loaded in main code base
     StopMusicStream(music);
     PlayMusicStream(music);
 }
 
-// Gameplay Screen Update logic
-void UpdateGameplayScreen(void)
-{
+// Spiderplay Screen Update logic
+void UpdateSpiderplayScreen(void){
     if (IsKeyPressed('P'))
     {
         PlaySound(fxPause);
@@ -150,11 +149,10 @@ void UpdateGameplayScreen(void)
         else ResumeMusicStream(music);
     }
 
-
     if (!pause)
     {
         framesCounter++;        // Time starts counting to awake enemies
-        
+
         // Player movement logic (mouse)
         player.position.y = GetMousePosition().y;
         player.position.x = GetMousePosition().x;
@@ -162,7 +160,7 @@ void UpdateGameplayScreen(void)
         // Player logic: check player area limits
         if (player.position.x < playerArea.x) player.position.x = playerArea.x;
         else if ((player.position.x + player.width) > (playerArea.x + playerArea.width)) player.position.x = playerArea.x + playerArea.width - player.width;
-        
+
         if (player.position.y < playerArea.y) player.position.y = playerArea.y;
         else if ((player.position.y + player.height) > (playerArea.y + playerArea.height)) player.position.y = playerArea.y + playerArea.height - player.height;
 
@@ -181,10 +179,22 @@ void UpdateGameplayScreen(void)
             finishScreen = 1;
         }
     }
+
+    for (int node = 0; node < nodeCounts; node++){
+        if (CheckCollisionPointCircle(GetMousePosition(), samples[node].position, 12) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+            if (adMatrix[spiderIndex][node]){
+                spiderIndex = node;
+                removeLinkBetween(*bestCut(spiderIndex), *(bestCut(spiderIndex) + 1));
+            }
+        }
+        if (spiderIndex == node) samples[node].color = RED;
+        else if (isButterflyIndex(node)) samples[node].color = GREEN;
+        else samples[node].color = DARKBROWN;
+    }
 }
 
-// Gameplay Screen Draw logic
-void DrawGameplayScreen(void)
+// Spiderplay Screen Draw logic
+void DrawSpiderplayScreen(void)
 {
     // Draw background
     DrawTexture(texBackground, 0, 0, WHITE);
@@ -205,10 +215,7 @@ void DrawGameplayScreen(void)
     // Draw samples
     for (int i = 0; i < nodeCounts; i++)
     {
-        Color col = DARKBROWN;
-        if (isButterflyIndex(i)) col = GREEN;
-        if (spiderIndex == i) col = RED;
-        DrawTexture(texSampleMid, samples[i].position.x - texSampleMid.width/2, samples[i].position.y - texSampleMid.height/2, col);
+        DrawTexture(texSampleMid, samples[i].position.x - texSampleMid.width/2, samples[i].position.y - texSampleMid.height/2, samples[i].color);
         if (i < 10) DrawText(FormatText("%i", i), samples[i].position.x-2, samples[i].position.y-5, 3, WHITE);
         else DrawText(FormatText("%i", i), samples[i].position.x-7, samples[i].position.y-5, 3, WHITE);
     }
@@ -217,7 +224,7 @@ void DrawGameplayScreen(void)
     // Draw player
     //DrawRectangle((int)player.position.x, (int)player.position.y, player.width, player.height, player.color);
     //DrawTexture(texPlayer, player.position.x - 32, player.position.y - 24, WHITE);
- 
+
     // Draw pause message
     if (pause) DrawTextEx(font, "GAME PAUSED", (Vector2){ 235, 400 }, font.baseSize*2, 0, WHITE);
 
@@ -228,17 +235,17 @@ void DrawGameplayScreen(void)
 
     // Draw synchonicity level
     //DrawRectangle(99, 622, 395, 32, Fade(RAYWHITE, 0.8f));
-        
+
     //if (synchro <= 0.3f) DrawRectangle(99, 622, synchro*395, 32, Fade(RED, 0.8f));
     //else if (synchro <= 0.8f) DrawRectangle(99, 622, synchro*395, 32, Fade(ORANGE,0.8f));
     //else if (synchro < 1.0f) DrawRectangle(99, 622, synchro*395, 32, Fade(LIME,0.8f));
     //else DrawRectangle(99, 622, synchro*395, 32, Fade(GREEN, 0.9f));
-    
+
     //DrawRectangleLines(99, 622, 395, 32, MAROON);
 
     //if (synchro == 1.0f) DrawTextEx(font, FormatText("%02i%%", (int)(synchro*100)), (Vector2){99 + 390, 600}, font.baseSize, -2, GREEN);
     //else DrawTextEx(font, FormatText("%02i%%", (int)(synchro*100)), (Vector2){99 + 390, 600}, font.baseSize, -2, SKYBLUE);
-    
+
     // Draw time warp coool-down bar
     //DrawRectangle(754, 622, 395, 32, Fade(RAYWHITE, 0.8f));
     //DrawRectangle(754, 622, warpCounter, 32, Fade(SKYBLUE, 0.8f));
@@ -248,18 +255,15 @@ void DrawGameplayScreen(void)
 
 }
 
-// Gameplay Screen Unload logic
-void UnloadGameplayScreen(void)
+// Spiderplay Screen Unload logic
+void UnloadSpiderplayScreen(void)
 {
     StopMusicStream(music);
-    
+
     // Unload textures
     UnloadTexture(texBackground);
     UnloadTexture(texPlayer);
-    UnloadTexture(texSampleSmall);
     UnloadTexture(texSampleMid);
-    UnloadTexture(texSampleBig);
-    
     UnloadRenderTexture(waveTarget);
 
     // Unload sounds
@@ -270,8 +274,8 @@ void UnloadGameplayScreen(void)
     free(samples);   // Unload game samples
 }
 
-// Gameplay Screen should finish?
-int FinishGameplayScreen(void)
+// Spiderplay Screen should finish?
+int FinishSpiderplayScreen(void)
 {
     return finishScreen;
 }
@@ -279,7 +283,7 @@ int FinishGameplayScreen(void)
 //------------------------------------------------------------------------------------
 // Module Functions Definitions (local)
 //------------------------------------------------------------------------------------
-void expandGraph(int coordMatrix[nodeCounts][2]){
+void expandGraphSpider(int coordMatrix[nodeCounts][2]){
     int leftMost = 1280, topMost = 720;
     for (int i = 0; i < nodeCounts; i++){
         if (leftMost > coordMatrix[i][0]) leftMost = coordMatrix[i][0];
@@ -291,7 +295,7 @@ void expandGraph(int coordMatrix[nodeCounts][2]){
         coordMatrix[i2][1] -= (topMost);
     }
     int isScaleable = 0;
-    for (float scale = 20.0f; !isScaleable; scale-=1){
+    for (float scale = 10.0f; !isScaleable; scale-=1){ // 10 would be maximum of scale
         for (int i3 = 0; i3 < nodeCounts; i3++){
             coordMatrix[i3][0] *= scale;
             coordMatrix[i3][1] *= scale;

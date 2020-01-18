@@ -34,12 +34,6 @@ void UpdateEndingScreen(void)
 {
     // TODO: Update ENDING screen variables here!
     framesCounter++;
-
-    // Press enter to return to TITLE screen
-    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-    {
-        finishScreen = 1;
-    }
 }
 
 // Ending Screen Draw logic
@@ -61,8 +55,6 @@ void DrawEndingScreen(void)
     DrawRectangle(0, GetScreenHeight() - 70, 560, 40, Fade(RAYWHITE, 0.8f));
     DrawText("Developed by Ebrahim Nejati", 36, GetScreenHeight() - 60, 20, DARKBLUE);
     
-
-    if ((framesCounter > 80) && ((framesCounter/40)%2)) DrawTextEx(font, "mouse click to return", (Vector2){ 300, 464 }, font.baseSize, 0, SKYBLUE);
 }
 
 // Ending Screen Unload logic

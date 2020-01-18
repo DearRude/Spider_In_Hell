@@ -53,6 +53,12 @@ void UpdateTitleScreen(void)
         StopMusicStream(music);
         finishScreen = 1;
     }
+    if (IsMouseButtonPressed(MOUSE_RIGHT_BUTTON))
+    {
+        PlaySound(fxStart);
+        StopMusicStream(music);
+        finishScreen = 2;
+    }
 }
 
 // Title Screen Draw logic
@@ -66,7 +72,7 @@ void DrawTitleScreen(void)
     DrawTexture(texLogo, GetScreenWidth() - 128 - 34, GetScreenHeight() - 128 - 36, WHITE);
     DrawTexture(texLogo2, GetScreenWidth() - 128 - 34, GetScreenHeight() - 300, WHITE);
 
-    if ((framesCounter > 160) && ((framesCounter/40)%2)) DrawTextEx(font, "mouse click to start", (Vector2){ 325, 500 }, font.baseSize, 0, SKYBLUE);
+    if ((framesCounter > 160) && ((framesCounter/40)%2)) DrawTextEx(font, "[L] Guardian | [R] Spider", (Vector2){ 290, 500 }, font.baseSize, 0, SKYBLUE);
 }
 
 // Title Screen Unload logic

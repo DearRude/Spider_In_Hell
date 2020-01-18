@@ -38,7 +38,7 @@ int main(int argc, char * argv[]) {
 //    add3lengthRoutes(spiderIndex, 5);
 //    makeGravitySymmetric();
 //    printGravityMatrix();
-    //addNlengthRoutes(spiderIndex, 4, 5);
+//    addNlengthRoutes(spiderIndex, 4, 5);
 
 
 
@@ -63,7 +63,7 @@ int main(int argc, char * argv[]) {
             currentScreen = LOGO;
             InitLogoScreen();
             //InitTitleScreen();
-            //InitGameplayScreen();
+            //InitSpiderplayScreen();
             //InitEndingScreen();
             SetTargetFPS(60);   // Set our game to run at 60 frames-per-second
             //--------------------------------------------------------------------------------------
@@ -80,7 +80,8 @@ int main(int argc, char * argv[]) {
             {
                 case LOGO: UnloadLogoScreen(); break;
                 case TITLE: UnloadTitleScreen(); break;
-                case GAMEPLAY: UnloadGameplayScreen(); break;
+                case Spider: UnloadSpiderplayScreen(); break;
+                case Butterfly: UnloadButterflyplayScreen(); break;
                 case ENDING: UnloadEndingScreen(); break;
                 default: break;
             }
@@ -142,7 +143,8 @@ static void ChangeToScreen(int screen)
     {
         case LOGO: UnloadLogoScreen(); break;
         case TITLE: UnloadTitleScreen(); break;
-        case GAMEPLAY: UnloadGameplayScreen(); break;
+        case Butterfly: UnloadButterflyplayScreen(); break;
+        case Spider: UnloadSpiderplayScreen(); break;
         case ENDING: UnloadEndingScreen(); break;
         default: break;
     }
@@ -152,7 +154,8 @@ static void ChangeToScreen(int screen)
     {
         case LOGO: InitLogoScreen(); break;
         case TITLE: InitTitleScreen(); break;
-        case GAMEPLAY: InitGameplayScreen(); break;
+        case Butterfly: InitButterflyplayScreen(); break;
+        case Spider: InitSpiderplayScreen(); break;
         case ENDING: InitEndingScreen(); break;
         default: break;
     }
@@ -188,7 +191,8 @@ static void UpdateTransition(void)
             {
                 case LOGO: UnloadLogoScreen(); break;
                 case TITLE: UnloadTitleScreen(); break;
-                case GAMEPLAY: UnloadGameplayScreen(); break;
+                case Butterfly: UnloadButterflyplayScreen(); break;
+                case Spider: UnloadSpiderplayScreen(); break;
                 case ENDING: UnloadEndingScreen(); break;
                 default: break;
             }
@@ -198,7 +202,8 @@ static void UpdateTransition(void)
             {
                 case LOGO: InitLogoScreen(); break;
                 case TITLE: InitTitleScreen(); break;
-                case GAMEPLAY: InitGameplayScreen(); break;
+                case Butterfly: InitButterflyplayScreen(); break;
+                case Spider: InitSpiderplayScreen(); break;
                 case ENDING: InitEndingScreen(); break;
                 default: break;
             }
@@ -250,16 +255,24 @@ static void UpdateDrawFrame(void)
             {
                 UpdateTitleScreen();
 
-                if (FinishTitleScreen() == 1) TransitionToScreen(GAMEPLAY);
+                if (FinishTitleScreen() == 1) TransitionToScreen(Butterfly);
+                else if (FinishTitleScreen() == 2) TransitionToScreen(Spider);
 
             } break;
-            case GAMEPLAY:
+            case Butterfly:
             {
-                UpdateGameplayScreen();
+                UpdateButterflyplayScreen();
 
-                if (FinishGameplayScreen() == 1) TransitionToScreen(ENDING);
-                //else if (FinishGameplayScreen() == 2) TransitionToScreen(TITLE);
+                if (FinishButterflyplayScreen() == 1) TransitionToScreen(ENDING);
+                //else if (FinishButterflyplayScreen() == 2) TransitionToScreen(TITLE);
 
+            } break;
+            case Spider:
+            {
+                UpdateSpiderplayScreen();
+
+                if (FinishSpiderplayScreen() == 1) TransitionToScreen(ENDING);
+                //else if (FinishSpiderplayScreen() == 2) TransitionToScreen(TITLE);
             } break;
             case ENDING:
             {
@@ -285,7 +298,8 @@ static void UpdateDrawFrame(void)
     {
         case LOGO: DrawLogoScreen(); break;
         case TITLE: DrawTitleScreen(); break;
-        case GAMEPLAY: DrawGameplayScreen(); break;
+        case Butterfly: DrawButterflyplayScreen(); break;
+        case Spider: DrawSpiderplayScreen(); break;
         case ENDING: DrawEndingScreen(); break;
         default: break;
     }
