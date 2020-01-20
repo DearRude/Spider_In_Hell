@@ -4,27 +4,18 @@
 #include "../../funcHeader.h"
 
 #include <stdlib.h>                 // Required for: malloc(), free()
-#include <math.h>                   // Required for: sqrtf(), asinf()
-
 //----------------------------------------------------------------------------------
 // Types and Structures Definition
 //----------------------------------------------------------------------------------
 typedef struct Player {
     Vector2 position;
-    Vector2 speed;
     int width;
     int height;
-    Color color;
 } Player;
 
 
 typedef struct Sample {
     Vector2 position;
-    float value;            // Raw audio sample value (normalized)
-    int radius;
-    bool active;            // Define if sample is active (can be collected)
-    bool collected;         // Define if sample has been collected
-    bool renderable;        // Define if sample should be rendered
     Color color;
 } Sample;
 
@@ -34,6 +25,7 @@ typedef struct Sample {
 
 // Gameplay screen global variables
 static int framesCounter;
+static int onceButton;
 static int firstnode, lastnode;
 static int frameHeight;
 static int finishScreen;
@@ -55,9 +47,7 @@ static Sample *samples;         // Game samples
 // Resources variables
 static Texture2D texBackground;
 static Texture2D texPlayer;
-static Texture2D texSampleSmall;
 static Texture2D texSampleMid;
-static Texture2D texSampleBig;
 static Texture2D button;
 static Vector2 mousePoint;
 
@@ -118,9 +108,7 @@ void InitButterflyplayScreen(void)
     
     player.width = 20;
     player.height = 60;
-    player.speed = (Vector2){ 15, 15 };
-    player.color = GOLD;
-    player.position = (Vector2){ playerArea.x + playerArea.width/2 - texPlayer.width/2, 
+    player.position = (Vector2){ playerArea.x + playerArea.width/2 - texPlayer.width/2,
                                  playerArea.y + playerArea.height/2 - texPlayer.height/2 };
 
     // Initialize wave and samples data
@@ -140,21 +128,12 @@ void InitButterflyplayScreen(void)
     // Initialize samples
     for (int i = 0; i < nodeCounts; i++)
     {
-        //samples[i].value = waveData[i*samplesDivision]*sampleScaleFactor;   // Normalized value [-1.0..1.0]
         samples[i].position.x = coordMatrix[i][0];
         samples[i].position.y = coordMatrix[i][1] + 160;
-        
-        //if (samples[i].position.y > GetScreenHeight()/2 + MAX_GAME_HEIGHT/2) samples[i].position.y = GetScreenHeight()/2 - MAX_GAME_HEIGHT/2;
-        //else if (samples[i].position.y < GetScreenHeight()/2 - MAX_GAME_HEIGHT/2) samples[i].position.y = GetScreenHeight()/2 + MAX_GAME_HEIGHT/2;
-        
-        samples[i].radius = 6;
-        samples[i].active = true;
-        samples[i].collected = false;
-        samples[i].renderable = true;
         samples[i].color = DARKBROWN;
     }
     free(waveData);
-    
+    onceButton = 1;
     // Load and start playing music
     // NOTE: Music is loaded in main code base
     StopMusicStream(music);
@@ -232,10 +211,11 @@ void UpdateButterflyplayScreen(void){
     }
     else btnState = 0;
 
-    if (btnAction)
+    if (btnAction && onceButton)
     {
         PlaySound(fxButton);
         spiderIndex = bestMove(spiderIndex);
+        onceButton = 0;
     }
 
     // Calculate button frame rectangle to draw depending on button state
@@ -248,10 +228,6 @@ void DrawButterflyplayScreen(void)
     // Draw background
     DrawTexture(texBackground, 0, 0, WHITE);
 
-    // Screen elements drawing
-    //DrawRectangleLines(playerArea.x, playerArea.y, playerArea.width, playerArea.height, BLUE);
-    //DrawRectangle(0, GetScreenHeight()/2 - 1, GetScreenWidth(), 2, Fade(BLUE, 0.3f));
-    //DrawRectangleLines(0, GetScreenHeight()/2 - MAX_GAME_HEIGHT/2, GetScreenWidth(), MAX_GAME_HEIGHT, GRAY);
 
     // Draw Links
     for (int first = 0; first < nodeCounts; first++)
@@ -270,37 +246,9 @@ void DrawButterflyplayScreen(void)
     }
 
 
-    // Draw player
-    //DrawRectangle((int)player.position.x, (int)player.position.y, player.width, player.height, player.color);
-    //DrawTexture(texPlayer, player.position.x - 32, player.position.y - 24, WHITE);
- 
     // Draw pause message
     if (pause) DrawTextEx(font, "GAME PAUSED", (Vector2){ 235, 400 }, font.baseSize*2, 0, WHITE);
     DrawTextureRec(button, sourceRec, (Vector2){ btnBounds.x, btnBounds.y }, WHITE); // Draw button frame
-    // Draw number of samples
-    //DrawText(FormatText("%05i", collectedSamples), 900, 200, 40, GRAY);
-    //DrawText(FormatText("%05i", totalSamples), 900, 250, 40, GRAY);
-    //DrawTextEx(font, FormatText("%05i / %05i", collectedSamples, totalSamples), (Vector2){810, 170}, font.baseSize, -2, SKYBLUE);
-
-    // Draw synchonicity level
-    //DrawRectangle(99, 622, 395, 32, Fade(RAYWHITE, 0.8f));
-        
-    //if (synchro <= 0.3f) DrawRectangle(99, 622, synchro*395, 32, Fade(RED, 0.8f));
-    //else if (synchro <= 0.8f) DrawRectangle(99, 622, synchro*395, 32, Fade(ORANGE,0.8f));
-    //else if (synchro < 1.0f) DrawRectangle(99, 622, synchro*395, 32, Fade(LIME,0.8f));
-    //else DrawRectangle(99, 622, synchro*395, 32, Fade(GREEN, 0.9f));
-    
-    //DrawRectangleLines(99, 622, 395, 32, MAROON);
-
-    //if (synchro == 1.0f) DrawTextEx(font, FormatText("%02i%%", (int)(synchro*100)), (Vector2){99 + 390, 600}, font.baseSize, -2, GREEN);
-    //else DrawTextEx(font, FormatText("%02i%%", (int)(synchro*100)), (Vector2){99 + 390, 600}, font.baseSize, -2, SKYBLUE);
-    
-    // Draw time warp coool-down bar
-    //DrawRectangle(754, 622, 395, 32, Fade(RAYWHITE, 0.8f));
-    //DrawRectangle(754, 622, warpCounter, 32, Fade(SKYBLUE, 0.8f));
-    //DrawRectangleLines(754, 622, 395, 32, DARKGRAY);
-    //DrawText(FormatText("%02i%%", (int)(synchro*100)), 754 + 410, 628, 20, DARKGRAY);
-    //DrawTextEx(font, FormatText("%02i%%", (int)((float)warpCounter/395.0f*100.0f)), (Vector2){754 + 390, 600}, font.baseSize, -2, SKYBLUE);
 
 }
 

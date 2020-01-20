@@ -3,27 +3,19 @@
 #include "../../funcHeader.h"
 
 #include <stdlib.h>                 // Required for: malloc(), free()
-#include <math.h>                   // Required for: sqrtf(), asinf()
 
 //----------------------------------------------------------------------------------
 // Types and Structures Definition
 //----------------------------------------------------------------------------------
 typedef struct Player {
     Vector2 position;
-    Vector2 speed;
     int width;
     int height;
-    Color color;
 } Player;
 
 
 typedef struct Sample {
     Vector2 position;
-    float value;            // Raw audio sample value (normalized)
-    int radius;
-    bool active;            // Define if sample is active (can be collected)
-    bool collected;         // Define if sample has been collected
-    bool renderable;        // Define if sample should be rendered
     Color color;
 } Sample;
 
@@ -48,9 +40,7 @@ static Sample *samples;         // Game samples
 // Resources variables
 static Texture2D texBackground;
 static Texture2D texPlayer;
-static Texture2D texSampleSmall;
 static Texture2D texSampleMid;
-static Texture2D texSampleBig;
 
 static RenderTexture2D waveTarget;
 
@@ -95,8 +85,6 @@ void InitSpiderplayScreen(void)
 
     player.width = 20;
     player.height = 60;
-    player.speed = (Vector2){ 15, 15 };
-    player.color = GOLD;
     player.position = (Vector2){ playerArea.x + playerArea.width/2 - texPlayer.width/2,
                                  playerArea.y + playerArea.height/2 - texPlayer.height/2 };
 
@@ -123,11 +111,6 @@ void InitSpiderplayScreen(void)
 
         //if (samples[i].position.y > GetScreenHeight()/2 + MAX_GAME_HEIGHT/2) samples[i].position.y = GetScreenHeight()/2 - MAX_GAME_HEIGHT/2;
         //else if (samples[i].position.y < GetScreenHeight()/2 - MAX_GAME_HEIGHT/2) samples[i].position.y = GetScreenHeight()/2 + MAX_GAME_HEIGHT/2;
-
-        samples[i].radius = 6;
-        samples[i].active = true;
-        samples[i].collected = false;
-        samples[i].renderable = true;
         samples[i].color = DARKBROWN;
     }
     free(waveData);
