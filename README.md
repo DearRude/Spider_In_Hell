@@ -21,20 +21,21 @@
 ➔ make install
 ```
 
-2. \(Optional\) You can go to VMG directory, generate a graph and put its data in near `main.c` file. \(Read more in VMG section\)
-
-3. Generate Makefile using `cmake`:
+2. Generate Makefile using `cmake`:
 
 ```text
 ➔ mkdir build && cd build 
 ➔ cmake -S .. -B .
 ```
 
-4. Compile the game using `make`:
+3. Compile the game using `make`:
 
 ```text
 ➔ make
 ```
+
+4. You can go to VMG directory, generate a graph (or use the pre-made graph `graphData` file) and put in near `Spider-In-Hell` file. \(Read more in VMG section\) 
+
 
 5. Run the game and Have fun!
 
