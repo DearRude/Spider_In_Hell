@@ -13,7 +13,7 @@ void clear(){
 int fileGetMatrix(void){
     // Reads Node counts and Matrix from file.
     FILE *map;
-    map = fopen("/home/dearrude/CLionProjects/Spider-In-Hell/graphData", "r+");
+    map = fopen("graphData", "r+");
     if (map == NULL){
         perror("Error finding adMatrix map file. ");
         return (-1);
