@@ -4,7 +4,7 @@
 
 * cmake \(3.15 or newer\)
 * make
-* unzip \(You can use 7z or other programs too\)
+* [raylib](https://github.com/raysan5/raylib/) library
 
 ## Installation
 
