@@ -20,7 +20,6 @@ static Texture2D texLose;
 // Ending Screen Initialization logic
 void InitEndingScreen(void)
 {
-    // TODO: Initialize ENDING screen variables here!
     framesCounter = 0;
     finishScreen = 0;
 

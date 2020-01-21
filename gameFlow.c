@@ -18,71 +18,20 @@ int fileGetMatrix(void){
         perror("Error finding adMatrix map file. ");
         return (-1);
     }
-    fscanf(map, "%d", &nodeCounts);
-    int chara;
-    int iMatrix = 0, jMatrix = 0, iButter = 0, iCoord = 0;
-    int statMatrix = 0, statNumSpider = 0, statPosSpider = 0, statNumButterflies = 0, statPosButterflies = 0;
-
-    while (!feof(map)){
-        fscanf(map, "%d", &chara);
-
-        //if (!(chara >= '0' && chara <= '9')) continue; // Pass non-integer numbers.
-
-        if (!statMatrix){ // Get Matrix section.
-            if (iMatrix == nodeCounts){ // Go to next line in the adMatrix
-                iMatrix = 0;
-                jMatrix++;
-            }
-            if (jMatrix == nodeCounts - 1 && iMatrix == nodeCounts - 1) statMatrix = 1;
-            adMatrix[iMatrix++][jMatrix] = chara;} // Get Matrix.
-
-        else if (!statNumSpider){
-            spiderCount = chara;
-            statNumSpider = 1;
-        } // Get number of spiders.
-
-        else if (!statPosSpider){
-            spiderIndex = chara;
-            statPosSpider = 1;
-        } // Get position of the spiders.
-
-        else if (!statNumButterflies){
-            butterfliesCount = chara;
-            statNumButterflies = 1;
-        } // Get the Number of the butterflies.
-
-        else if (!statPosButterflies){
-            butterfliesIndex[iButter++] = chara;
-            if (iButter == butterfliesCount - 1) {statPosButterflies = 1;}
-        } // Get the position of the butterflies.
-
-        else {
-            while (iCoord < nodeCounts){
-                fscanf(map, "%d %d", &coordMatrix[iCoord][0], &coordMatrix[iCoord][1]);
-                iCoord++;
-                butterfliesIndex[iButter] = chara;
-            }
-        } // Get the coordinates of the nodes.
+      fscanf(map, "%d", &nodeCounts);
+    for (int i = 0; i < nodeCounts; i++)
+        for (int j = 0; j < nodeCounts; j++){
+            fscanf(map, "%d", &adMatrix[i][j]);
+        }
+    fscanf(map, "%d", &spiderCount);
+    fscanf(map, "%d", &spiderIndex);
+    fscanf(map, "%d", &butterfliesCount);
+    for (int x = 0; x < butterfliesCount; x++){
+        fscanf(map, "%d", &butterfliesIndex[x]);
     }
-
-//    for(int i=0; i<nodeCounts; i++) {
-//        for (int j = 0; j < nodeCounts; j++) {
-//            printf("%d ", adMatrix[i][j]);
-//        }
-//        printf("\n");
-//    }
-//    printf("%d %d\n", spiderCount, spiderIndex);
-//    printf("%d\n", butterfliesCount);
-//    for (int ii=0; ii<butterfliesCount; ii++){
-//        printf("%d\n", butterfliesIndex[ii]);
-//    }
-//
-//    for(int i=0; i<nodeCounts; i++) {
-//        for (int j = 0; j <2; j++) {
-//            printf("%d ", coordMatrix[i][j]);
-//        }
-//        printf("\n");
-//    }
+    for (int x2 = 0; x2 < nodeCounts; x2++){
+        fscanf(map, "%d %d", &coordMatrix[x2][0], &coordMatrix[x2][1]);
+    }
     fclose(map);
     printf("Graph data was imported successfully.\n");
     return (0);
