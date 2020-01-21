@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.11)
 project(Spider_In_Hell C)
 # Grab the screens
 file(GLOB screen_sources "graphic/screens/*.c")
